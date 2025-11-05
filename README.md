@@ -11,7 +11,7 @@ A comprehensive Django-based feedback management system for educational institut
 - **Class Teacher Dashboard**: Track student feedback completion
 - **Reports**: Download Excel and CSV reports
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - **Backend**: Django, Python
 - **Frontend**: React.js
