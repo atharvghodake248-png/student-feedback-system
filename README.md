@@ -1,8 +1,8 @@
-# 🎓 Student-Teacher Feedback System
+#  Student-Teacher Feedback System
 
 A comprehensive Django-based feedback management system for educational institutions.
 
-## ✨ Features
+##  Features
 
 - **Student Management**: Add, edit, and manage students with divisions
 - **Teacher Management**: Assign subjects and class teachers
@@ -19,7 +19,7 @@ A comprehensive Django-based feedback management system for educational institut
 - **Authentication**: Django Auth System
 - **Sentiment Analysis**: TextBlob
 
-## 📦 Installation
+##  Installation
 
 1. Clone the repository:
 ```bash
@@ -53,16 +53,8 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-## 👥 User Types
+##  User Types
 
 - **Admin**: Full system access
 - **Teacher**: View feedback and manage classes
 - **Student**: Submit feedback for subjects
-
-## 📧 Contact
-
-Atharv Ghodake - atharvghodake248@gmail.com
-
-## 📄 License
-
-This project is open source and available under the MIT License.
