@@ -1,4 +1,4 @@
-/* ===== GENERAL LAYOUT ===== */
+/* GENERAL LAYOUT */
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +11,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 .dashboard-header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white !important;
@@ -41,7 +41,7 @@
   color: white !important;
 }
 
-/* ===== NAVIGATION TABS ===== */
+/* NAVIGATION TABS */
 .dashboard-nav {
   background: white;
   padding: 0;
@@ -75,14 +75,14 @@
   background: #f9fafb;
 }
 
-/* ===== MAIN CONTENT ===== */
+/*  MAIN CONTENT  */
 .dashboard-content {
   padding: 2rem;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* ===== MESSAGES ===== */
+/*  MESSAGES  */
 .error-message {
   background: #fee2e2;
   border: 1px solid #ef4444;
@@ -103,7 +103,7 @@
   font-weight: 500;
 }
 
-/* ===== FORM CONTAINER ===== */
+/*  FORM CONTAINER  */
 .form-container {
   background: white;
   border-radius: 12px;
@@ -126,7 +126,7 @@
   margin-top: 1.5rem;
 }
 
-/* ===== FORMS ===== */
+/*  FORMS  */
 .admin-form {
   display: flex;
   flex-direction: column;
@@ -180,7 +180,7 @@
   font-size: 0.85rem;
 }
 
-/* ===== FILTERS SECTION ===== */
+/*  FILTERS SECTION  */
 .filters-section {
   background: #f9fafb;
   padding: 1.5rem;
@@ -189,7 +189,7 @@
   border: 1px solid #e5e7eb;
 }
 
-/* ===== ENHANCED TABLE STYLES ===== */
+/*  ENHANCED TABLE STYLES  */
 .data-table {
   width: 100%;
   border-collapse: separate;
@@ -276,7 +276,7 @@
   box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
 }
 
-/* ===== BUTTONS ===== */
+/*  BUTTONS  */
 .btn-primary,
 .btn-secondary,
 .btn-danger,
@@ -353,7 +353,7 @@
   margin: 0.2rem;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/*  RESPONSIVE DESIGN  */
 @media (max-width: 768px) {
   .dashboard-header {
     flex-direction: column;
@@ -388,7 +388,6 @@
   }
 }
 
-/* ===== LOADING STATE ===== */
 .loading-spinner {
   text-align: center;
   padding: 2rem;
@@ -396,7 +395,6 @@
   font-style: italic;
 }
 
-/* ===== EMPTY STATE ===== */
 .form-container p {
   text-align: center;
   padding: 2rem;
@@ -404,7 +402,6 @@
   font-size: 1rem;
 }
 
-/* ===== SCROLLBAR STYLING ===== */
 .form-container::-webkit-scrollbar {
   height: 8px;
   width: 8px;
@@ -424,7 +421,6 @@
   background: #555;
 }
 
-/* ===== CHECKBOX STYLING ===== */
 input[type="checkbox"] {
   width: 18px;
   height: 18px;
@@ -432,7 +428,6 @@ input[type="checkbox"] {
   accent-color: #667eea;
 }
 
-/* ===== SPECIAL TABLE FEATURES ===== */
 .data-table tbody tr.editing {
   background: #fef3c7 !important;
   border-left: 4px solid #f59e0b;
@@ -442,7 +437,6 @@ input[type="checkbox"] {
   background: #fde68a !important;
 }
 
-/* ===== PRINT STYLES ===== */
 @media print {
   .dashboard-header,
   .dashboard-nav,
