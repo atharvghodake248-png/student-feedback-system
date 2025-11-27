@@ -20,7 +20,7 @@ from .models import (
     Semester, Feedback, FeedbackSummary, Division, TeacherSubject
 )
 
-# ==================== SENTIMENT ANALYSIS ====================
+#SENTIMENT ANALYSIS
 
 def analyze_sentiment(text):
     """Analyze sentiment of text and return sentiment label and score"""
@@ -49,7 +49,7 @@ def analyze_sentiment(text):
     else:
         return 'neutral', polarity
 
-# ==================== AUTHENTICATION ====================
+#AUTHENTICATION
 
 @csrf_exempt
 @require_http_methods(["POST"])
@@ -124,7 +124,7 @@ def logout_view(request):
     logout(request)
     return JsonResponse({'success': True, 'message': 'Logged out successfully'})
 
-# ==================== STUDENT VIEWS ====================
+#STUDENT VIEWS
 
 def student_dashboard(request):
     """Get student dashboard data"""
@@ -338,7 +338,7 @@ def manage_access(request):
         print("MANAGE ACCESS ERROR:", traceback.format_exc())
         return JsonResponse({'error': str(e)}, status=500)
 
-# ==================== DELETE OPERATIONS ====================
+#DELETE OPERATIONS
 
 @csrf_exempt
 @require_http_methods(["DELETE"])
@@ -407,7 +407,7 @@ def delete_subject(request, subject_id):
         print("DELETE SUBJECT ERROR:", traceback.format_exc())
         return JsonResponse({'error': str(e)}, status=500)
 
-# ==================== BULK OPERATIONS ====================
+#BULK OPERATIONS
 
 @csrf_exempt
 @require_http_methods(["POST"])
@@ -493,7 +493,7 @@ def bulk_add_students(request):
         print("BULK ADD STUDENTS ERROR:", traceback.format_exc())
         return JsonResponse({'error': str(e)}, status=500)
 
-# ==================== STATISTICS & REPORTS ====================
+#STATISTICS & REPORTS
 
 def get_admin_statistics(request):
     """Get overall system statistics for admin dashboard"""
@@ -611,7 +611,7 @@ def download_all_feedback_report(request):
         print("DOWNLOAD ALL FEEDBACK ERROR:", traceback.format_exc())
         return JsonResponse({'error': str(e)}, status=500)
 
-# ==================== SEARCH & FILTER ====================
+#SEARCH & FILTER
 
 def search_users(request):
     """Search for students and teachers"""
@@ -673,7 +673,7 @@ def search_users(request):
         print("SEARCH USERS ERROR:", traceback.format_exc())
         return JsonResponse({'error': str(e)}, status=500)
 
-# ==================== TEACHER-SUBJECT ASSIGNMENT ====================
+#TEACHER-SUBJECT ASSIGNMENT
 
 def get_subjects_by_class(request):
     """Get subjects for specific year, branch, semester, division"""
@@ -900,7 +900,7 @@ def get_all_teacher_subject_assignments(request):
             'error': str(e)
         }, status=500)
 
-# ==================== HEALTH CHECK ====================
+#HEALTH CHECK
 
 def health_check(request):
     """API health check endpoint"""
@@ -920,7 +920,7 @@ def health_check(request):
             'error': str(e)
         }, status=500)
 
-# ==================== ADMIN VIEWS ====================
+#ADMIN VIEWS
 
 @csrf_exempt
 @require_http_methods(["POST"])
@@ -1186,7 +1186,7 @@ def update_subject(request, subject_id):
             if 'credits' in data:
                 subject.credits = int(data['credits'])
             
-            # ✅ UPDATE: Handle year and semester changes
+            #UPDATE: Handle year and semester changes
             if 'year_id' in data and 'semester_id' in data:
                 # Get the semester that belongs to the year
                 try:
@@ -1200,7 +1200,7 @@ def update_subject(request, subject_id):
                         'error': 'Invalid semester for the selected year'
                     }, status=400)
             
-            # ✅ UPDATE: Handle branch change
+            #UPDATE: Handle branch change
             if 'branch_id' in data:
                 try:
                     branch = Branch.objects.get(id=data['branch_id'])
@@ -1347,7 +1347,7 @@ def reset_teacher_password(request, teacher_id):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
-# ==================== DATA APIS ====================
+# DATA APIS
 
 def get_branches(request):
     """Get all branches"""
@@ -1553,7 +1553,7 @@ def submit_feedback(request):
         print("SUBMIT FEEDBACK ERROR:", traceback.format_exc())
         return JsonResponse({'error': str(e)}, status=500)
 
-# ==================== TEACHER VIEWS ====================
+#  TEACHER VIEWS 
 
 def teacher_dashboard(request):
     """Get teacher dashboard with analytics"""
@@ -1826,7 +1826,7 @@ def download_feedback_data(request):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
 
-# ==================== CLASS TEACHER VIEWS ====================
+#  CLASS TEACHER VIEWS 
 
 def class_teacher_dashboard(request):
     """Get class teacher specific dashboard data WITH DIVISION"""
