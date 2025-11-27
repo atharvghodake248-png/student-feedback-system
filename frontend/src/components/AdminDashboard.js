@@ -8,9 +8,9 @@ import {
   getSemesters,
   getDivisions,
   logout,
-  updateStudent,    // ADD THIS
-  updateTeacher,    // ADD THIS
-  updateSubject     // ADD THIS
+  updateStudent,    
+  updateTeacher,    
+  updateSubject     
 } from '../services/api';
 import './AdminDashboard.css';
 
