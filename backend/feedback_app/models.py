@@ -4,10 +4,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 
-
-# ------------------------------
 #  USER MODEL
-# ------------------------------
 class CustomUser(AbstractUser):
     """Extended user model with additional fields"""
     USER_TYPE_CHOICES = [
@@ -32,10 +29,7 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return f"{self.username} ({self.get_user_type_display()})"
 
-
-# ------------------------------
 #  BRANCH MODEL
-# ------------------------------
 class Branch(models.Model):
     """Academic branches/departments"""
     name = models.CharField(max_length=100)
@@ -47,10 +41,7 @@ class Branch(models.Model):
     def __str__(self):
         return f"{self.name} ({self.code})"
 
-
-# ------------------------------
 #  YEAR MODEL
-# ------------------------------
 class Year(models.Model):
     """Academic years"""
     name = models.CharField(max_length=20, unique=True)
@@ -61,10 +52,7 @@ class Year(models.Model):
     def __str__(self):
         return self.name
 
-
-# ------------------------------
 #  SEMESTER MODEL
-# ------------------------------
 class Semester(models.Model):
     """Semesters within academic years"""
     number = models.IntegerField(
@@ -79,10 +67,7 @@ class Semester(models.Model):
     def __str__(self):
         return f"{self.year.name} - Semester {self.number}"
 
-
-# ------------------------------
 #  DIVISION MODEL
-# ------------------------------
 class Division(models.Model):
     """Division/Section - A, B, C, D, etc."""
     name = models.CharField(max_length=10, unique=True, help_text="Division name (A, B, C, etc.)")
@@ -95,10 +80,7 @@ class Division(models.Model):
     def __str__(self):
         return f"Division {self.name}"
 
-
-# ------------------------------
 #  SUBJECT MODEL
-# ------------------------------
 class Subject(models.Model):
     """Academic subjects"""
     code = models.CharField(max_length=20)
@@ -116,17 +98,13 @@ class Subject(models.Model):
         div_str = f" - Div {self.division.name}" if self.division else ""
         return f"{self.code} - {self.name}{div_str}"
 
-
-# ------------------------------
 #  TEACHER MODEL
-# ------------------------------
 class Teacher(models.Model):
     """Teacher profile linked to CustomUser"""
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='teacher_profile')
     employee_id = models.CharField(max_length=20, unique=True)
     subjects = models.ManyToManyField(Subject, related_name='teachers', blank=True)
     department = models.ForeignKey(Branch, on_delete=models.CASCADE, null=True, blank=True)
-    
     # Class Teacher Fields
     is_class_teacher = models.BooleanField(default=False)
     assigned_class_year = models.ForeignKey(Year, on_delete=models.SET_NULL, null=True, blank=True, related_name='class_teachers')
@@ -136,11 +114,8 @@ class Teacher(models.Model):
     
     def __str__(self):
         return f"{self.employee_id} - {self.user.get_full_name()}"
-
-
-# ------------------------------
+        
 #  TEACHER-SUBJECT ASSIGNMENT (JUNCTION TABLE)
-# ------------------------------
 class TeacherSubject(models.Model):
     """Junction table for Teacher-Subject many-to-many relationship"""
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='subject_assignments')
@@ -156,10 +131,7 @@ class TeacherSubject(models.Model):
     def __str__(self):
         return f"{self.teacher.employee_id} teaches {self.subject.code}"
 
-        
-# ------------------------------
 #  STUDENT MODEL
-# ------------------------------
 class Student(models.Model):
     """Student profile linked to CustomUser"""
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='student_profile')
@@ -173,11 +145,8 @@ class Student(models.Model):
     def __str__(self):
         div_str = f" - Div {self.division.name}" if self.division else ""
         return f"{self.prn_number} - {self.user.get_full_name()}{div_str}"
-
-
-# ------------------------------
+        
 #  FEEDBACK MODEL
-# ------------------------------
 class Feedback(models.Model):
     """Student feedback for teachers and subjects"""
     SATISFACTION_CHOICES = [
@@ -225,10 +194,7 @@ class Feedback(models.Model):
     def __str__(self):
         return f"Feedback by {self.student.prn_number} for {self.teacher.user.get_full_name()} - {self.subject.code}"
 
-
-# ------------------------------
 #  FEEDBACK SUMMARY MODEL
-# ------------------------------
 class FeedbackSummary(models.Model):
     """Aggregated feedback summary for teachers and subjects"""
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='feedback_summaries')
@@ -255,10 +221,8 @@ class FeedbackSummary(models.Model):
     def __str__(self):
         return f"Summary: {self.teacher.user.get_full_name()} - {self.subject.code} ({self.semester})"
 
-
-# ------------------------------
 #  SIGNAL — AUTO CLASS TEACHER ASSIGNMENT
-# ------------------------------
+
 @receiver(pre_save, sender=Student)
 def auto_assign_class_teacher(sender, instance, **kwargs):
     """
