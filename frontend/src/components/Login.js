@@ -91,7 +91,7 @@ const Login = () => {
           </button>
         </form>
 
-        {/* 👇 Added section */}
+        {/* section */}
         <div style={{ textAlign: 'center', marginTop: '15px' }}>
           <button
             onClick={handleForgotPassword}
