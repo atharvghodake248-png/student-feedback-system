@@ -13,6 +13,7 @@ body {
 }
 
 /* Loading State */
+
 .loading {
   display: flex;
   justify-content: center;
@@ -23,6 +24,7 @@ body {
 }
 
 /* Messages */
+
 .error-message {
   background-color: #f8d7da;
   color: #721c24;
@@ -42,6 +44,7 @@ body {
 }
 
 /* Login Page */
+
 .login-container {
   display: flex;
   justify-content: center;
@@ -194,6 +197,7 @@ body {
 }
 
 /* Dashboard Navigation */
+
 .dashboard-nav {
   background: white;
   padding: 15px 40px;
@@ -224,6 +228,7 @@ body {
 }
 
 /* Dashboard Content */
+
 .dashboard-content {
   padding: 30px 40px;
   max-width: 1400px;
@@ -251,6 +256,7 @@ body {
 }
 
 /* Subjects Grid */
+
 .subjects-container h2 {
   color: #333;
   margin-bottom: 20px;
@@ -432,6 +438,7 @@ body {
 }
 
 /* Feedbacks List */
+
 .feedbacks-list {
   display: flex;
   flex-direction: column;
