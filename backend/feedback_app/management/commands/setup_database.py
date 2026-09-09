@@ -22,7 +22,7 @@ class Command(BaseCommand):
                 Subject.objects.all().delete()
                 Semester.objects.all().delete()
                 Year.objects.all().delete()
-                Branch.objects.all().delete()
+               Branch.objects.all().delete()
                 
                 # Create Branches
                 comp_branch, _ = Branch.objects.get_or_create(name="Computer Engineering", code="COMP")
@@ -229,10 +229,10 @@ class Command(BaseCommand):
                         self.stdout.write(self.style.SUCCESS(f'✓ Created student: {first_name} {last_name} ({prn})'))
                 
                 self.stdout.write(self.style.SUCCESS('\n' + '='*70))
-                self.stdout.write(self.style.SUCCESS('✅ DATABASE SETUP COMPLETED SUCCESSFULLY!'))
+                self.stdout.write(self.style.SUCCESS('DATABASE SETUP COMPLETED SUCCESSFULLY!'))
                 self.stdout.write(self.style.SUCCESS('='*70))
-                self.stdout.write(self.style.SUCCESS('\n📝 LOGIN CREDENTIALS:'))
-                self.stdout.write(self.style.SUCCESS('\n🔐 ADMIN:'))
+                self.stdout.write(self.style.SUCCESS('\n LOGIN CREDENTIALS:'))
+                self.stdout.write(self.style.SUCCESS('\n ADMIN:'))
                 self.stdout.write('   Username: admin')
                 self.stdout.write('   Password: admin123')
                 self.stdout.write(self.style.SUCCESS('\n👨‍🏫 TEACHERS (Login with PRN):'))
